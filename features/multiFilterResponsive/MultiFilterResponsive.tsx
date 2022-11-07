@@ -81,9 +81,7 @@ const MultiFilterResponsive = ({ data }: MultiFilterResponsiveType) => {
     return () => window.removeEventListener("resize", setColumnsWSize);
   }, []);
 
-  // const Cell = ({ columnIndex, rowIndex, style }: Cell) => {
-
-  const Cell = ({ columnIndex, rowIndex, style }: any) => {
+  const Cell = ({ columnIndex, rowIndex, style }: Cell) => {
     if (filteredData[rowIndex * columns + columnIndex]) {
       return (
         <div style={style} className="p-4">
