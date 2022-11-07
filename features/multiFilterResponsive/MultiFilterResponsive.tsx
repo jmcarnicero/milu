@@ -1,5 +1,5 @@
-import { FixedSizeGrid as Grid } from "react-window";
-import { CSSProperties, useEffect, useState } from "react";
+import { FixedSizeGrid as Grid, GridChildComponentProps } from "react-window";
+import { ComponentType, CSSProperties, useEffect, useState } from "react";
 import Card, { CardType } from "./components/Card";
 import SelectFilter from "./components/SelectFilter";
 import Highlight from "./components/HighlightValue";
@@ -81,7 +81,9 @@ const MultiFilterResponsive = ({ data }: MultiFilterResponsiveType) => {
     return () => window.removeEventListener("resize", setColumnsWSize);
   }, []);
 
-  const Cell = ({ columnIndex, rowIndex, style }: Cell) => {
+  // const Cell = ({ columnIndex, rowIndex, style }: Cell) => {
+
+  const Cell = ({ columnIndex, rowIndex, style }: any) => {
     if (filteredData[rowIndex * columns + columnIndex]) {
       return (
         <div style={style} className="p-4">
@@ -117,7 +119,7 @@ const MultiFilterResponsive = ({ data }: MultiFilterResponsiveType) => {
           rowHeight={820}
           width={windowSize.width}
         >
-          {Cell}
+          {Cell as ComponentType<GridChildComponentProps<any>>}
         </Grid>
       </div>
     </>
